@@ -10,7 +10,18 @@ import CvDownload from '../components/CvDownload.astro';
 		document.querySelector('body')?.classList.add('dark')
 	}
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0LWKW1YN1E"></script>
+<script>
+	// @ts-ignore
+  window.dataLayer = window.dataLayer || [];
+	// @ts-ignore
+  function gtag(){dataLayer.push(arguments);}
+	// @ts-ignore
+  gtag('js', new Date());
 
+	// @ts-ignore
+  gtag('config', 'G-0LWKW1YN1E');
+</script>
 <!doctype html>
 <html lang="pt-br">
 	<head>
