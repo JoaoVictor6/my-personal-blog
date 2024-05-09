@@ -1,6 +1,32 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import CvDownload from '../components/CvDownload.astro';
+
+const keywords = [
+	"Git",
+	"GitHub",
+	"CI/CD",
+	"HTML",
+	"CSS",
+	"C#",
+	"Javascript",
+	"Typescript",
+	"React",
+	"NextJs",
+	"AstroJS",
+	"Docker",
+	"AWS",
+	"EC2",
+	"Lambda",
+	"CloudWatch",
+	"RabbitMQ",
+	"Redis",
+	"PostgreSQL",
+	"MySQL",
+	"Figma",
+	"Google Analytics"
+] as const
+
 ---
 
 <script >
@@ -26,6 +52,7 @@ import CvDownload from '../components/CvDownload.astro';
 <html lang="pt-br">
 	<head>
 		<BaseHead
+			keywords={Array.from(keywords)}
 			title={"João Victor - Desenvolvedor Fullstack"} 
 			description={"Desenvolvedor Fullstack com foco em nodejs e react"} 
 			image='/profile-image.jpeg'
@@ -34,41 +61,120 @@ import CvDownload from '../components/CvDownload.astro';
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 	</head>
-	<body>
-		<section class="dark:bg-[#020A12] bg-[#FAF0CA] min-h-screen dark:text-white grid place-content-center space-y-6">
-			<section class="flex flex-col items-center space-y-4">
-				<img src='/profile-image.jpeg' alt="Foto do desenvolvedor" class="rounded-full" height="300" width="300" loading="lazy" />
-				<section>
-					<h1 class="text-5xl font-bold leading-[100%] mb-0">João Victor</h1>
-					<h2 class="text-xl font-bold">Desenvolvedor fullstack</h2>
+	<body class="">
+		<section class="dark:bg-[#020A12] bg-[#FAF0CA] min-h-screen dark:text-white ">
+			<section class="grid place-content-center space-y-6">
+				<section class="flex flex-col items-center space-y-4">
+					<img src='/profile-image.jpeg' alt="Foto do desenvolvedor" class="rounded-full" height="300" width="300" loading="lazy" />
+					<section>
+						<h1 class="text-5xl font-bold leading-[100%] mb-0">João Victor</h1>
+						<h2 class="text-xl font-bold">Desenvolvedor fullstack</h2>
+					</section>
 				</section>
-			</section>
-			<p class="leading-[150%] max-w-[90%] lg:max-w-[800px] mx-auto">
-				Estou constantemente buscando desafios que me permitam explorar novas fronteiras digitais. Com uma paixão por criar e inovar, minha jornada inclui contribuições em projetos de código aberto, onde posso aplicar minhas habilidades em Node.js, React, Next.js e TypeScript. Além do desenvolvimento de software, tenho interesse em áreas como inteligência artificial, marketing digital e empreendedorismo. Estou pronto para enfrentar novos desafios e fazer contribuições significativas no mundo da tecnologia.
-			</p>
+				<p class="leading-[150%] max-w-[90%] lg:max-w-[800px] mx-auto">
+					Estou constantemente buscando desafios que me permitam explorar novas fronteiras digitais. Com uma paixão por criar e inovar, minha jornada inclui contribuições em projetos de código aberto, onde posso aplicar minhas habilidades em Node.js, React, Next.js e TypeScript. Além do desenvolvimento de software, tenho interesse em áreas como inteligência artificial, marketing digital e empreendedorismo. Estou pronto para enfrentar novos desafios e fazer contribuições significativas no mundo da tecnologia.
+				</p>
 
-			<section class="flex gap-8 justify-center">
-				<a href="https://twitter.com/PrazerJo">
-					<svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path class="stroke-black dark:stroke-white" d="M34.9677 4.3125H41.308L27.4563 20.1442L43.7518 41.6875H30.9925L20.999 28.6216L9.56417 41.6875H3.22L18.0358 24.7537L2.4035 4.3125H15.4867L24.5199 16.2552L34.9677 4.3125ZM32.7424 37.8925H36.2557L13.5777 7.90817H9.80759L32.7424 37.8925Z" fill="black"/>
-					</svg>
-				</a>
-				<a href="https://github.com/joaovictor6">
-					<svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path class="stroke-black dark:stroke-white" d="M19.1667 39.421C12.5952 41.6392 7.11906 39.421 3.83334 32.5833" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-						<path class="stroke-black dark:stroke-white" d="M19.1667 42.1667V35.9526C19.1667 34.8059 19.5191 33.8092 20.0874 32.909C20.4773 32.2912 20.2103 31.4149 19.5061 31.2213C13.6734 29.6179 9.58334 27.0398 9.58334 18.4883C9.58334 16.265 10.3118 14.1748 11.5922 12.3556C11.9109 11.9028 12.0702 11.6765 12.1085 11.4714C12.1468 11.2664 12.0802 10.9988 11.947 10.4637C11.4049 8.2856 11.44 5.9727 12.2537 3.88744C12.2537 3.88744 13.935 3.33964 17.7617 5.73024C18.6354 6.27607 19.0723 6.54898 19.457 6.61003C19.8417 6.67107 20.3562 6.54319 21.3848 6.28745C22.7917 5.93774 24.2412 5.75 25.875 5.75C27.5088 5.75 28.9583 5.93774 30.3652 6.28745C31.3939 6.54319 31.9083 6.67107 32.293 6.61003C32.6778 6.54898 33.1146 6.27607 33.9883 5.73024C37.8151 3.33964 39.4964 3.88744 39.4964 3.88744C40.31 5.9727 40.3451 8.2856 39.803 10.4637C39.6698 10.9988 39.6031 11.2664 39.6415 11.4714C39.6798 11.6765 39.8391 11.9029 40.1578 12.3556C41.4381 14.1748 42.1667 16.265 42.1667 18.4883C42.1667 27.0398 38.0767 29.6179 32.2439 31.2213C31.5397 31.4149 31.2727 32.2912 31.6626 32.909C32.2309 33.8092 32.5833 34.8059 32.5833 35.9526V42.1667" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-					</svg>
-				</a>
-				<a href="https://www.linkedin.com/in/joao-victor-dsc/">
-					<svg width="47" height="46" viewBox="0 0 47 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path class="fill-black dark:fill-white" d="M10.7312 14.7806H1.4763C1.06555 14.7806 0.732729 15.1135 0.732729 15.5241V45.2563C0.732729 45.667 1.06555 45.9999 1.4763 45.9999H10.7312C11.142 45.9999 11.4748 45.667 11.4748 45.2563V15.5241C11.4748 15.1135 11.142 14.7806 10.7312 14.7806Z" fill="black"/>
-						<path class="fill-black dark:fill-white" d="M6.1071 0C2.73961 0 0 2.73664 0 6.10041C0 9.46566 2.73961 12.2033 6.1071 12.2033C9.47191 12.2033 12.2093 9.46552 12.2093 6.10041C12.2094 2.73664 9.47191 0 6.1071 0Z" fill="black"/>
-						<path class="fill-black dark:fill-white" d="M34.2718 14.0416C30.5547 14.0416 27.8069 15.6395 26.1402 17.4552V15.5241C26.1402 15.1135 25.8074 14.7806 25.3967 14.7806H16.5335C16.1227 14.7806 15.7899 15.1135 15.7899 15.5241V45.2563C15.7899 45.667 16.1227 45.9999 16.5335 45.9999H25.7682C26.1789 45.9999 26.5117 45.667 26.5117 45.2563V30.5458C26.5117 25.5887 27.8582 23.6575 31.3137 23.6575C35.0771 23.6575 35.3762 26.7534 35.3762 30.8008V45.2564C35.3762 45.6672 35.709 46 36.1197 46H45.3579C45.7686 46 46.1014 45.6672 46.1014 45.2564V28.9478C46.1014 21.5768 44.6959 14.0416 34.2718 14.0416Z" fill="black"/>
-					</svg>
-				</a>
-			</section>
+				<section class="flex gap-8 justify-center">
+					<a href="https://twitter.com/PrazerJo">
+						<svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path class="stroke-black dark:stroke-white" d="M34.9677 4.3125H41.308L27.4563 20.1442L43.7518 41.6875H30.9925L20.999 28.6216L9.56417 41.6875H3.22L18.0358 24.7537L2.4035 4.3125H15.4867L24.5199 16.2552L34.9677 4.3125ZM32.7424 37.8925H36.2557L13.5777 7.90817H9.80759L32.7424 37.8925Z" fill="black"/>
+						</svg>
+					</a>
+					<a href="https://github.com/joaovictor6">
+						<svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path class="stroke-black dark:stroke-white" d="M19.1667 39.421C12.5952 41.6392 7.11906 39.421 3.83334 32.5833" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+							<path class="stroke-black dark:stroke-white" d="M19.1667 42.1667V35.9526C19.1667 34.8059 19.5191 33.8092 20.0874 32.909C20.4773 32.2912 20.2103 31.4149 19.5061 31.2213C13.6734 29.6179 9.58334 27.0398 9.58334 18.4883C9.58334 16.265 10.3118 14.1748 11.5922 12.3556C11.9109 11.9028 12.0702 11.6765 12.1085 11.4714C12.1468 11.2664 12.0802 10.9988 11.947 10.4637C11.4049 8.2856 11.44 5.9727 12.2537 3.88744C12.2537 3.88744 13.935 3.33964 17.7617 5.73024C18.6354 6.27607 19.0723 6.54898 19.457 6.61003C19.8417 6.67107 20.3562 6.54319 21.3848 6.28745C22.7917 5.93774 24.2412 5.75 25.875 5.75C27.5088 5.75 28.9583 5.93774 30.3652 6.28745C31.3939 6.54319 31.9083 6.67107 32.293 6.61003C32.6778 6.54898 33.1146 6.27607 33.9883 5.73024C37.8151 3.33964 39.4964 3.88744 39.4964 3.88744C40.31 5.9727 40.3451 8.2856 39.803 10.4637C39.6698 10.9988 39.6031 11.2664 39.6415 11.4714C39.6798 11.6765 39.8391 11.9029 40.1578 12.3556C41.4381 14.1748 42.1667 16.265 42.1667 18.4883C42.1667 27.0398 38.0767 29.6179 32.2439 31.2213C31.5397 31.4149 31.2727 32.2912 31.6626 32.909C32.2309 33.8092 32.5833 34.8059 32.5833 35.9526V42.1667" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</a>
+					<a href="https://www.linkedin.com/in/joao-victor-dsc/">
+						<svg width="47" height="46" viewBox="0 0 47 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path class="fill-black dark:fill-white" d="M10.7312 14.7806H1.4763C1.06555 14.7806 0.732729 15.1135 0.732729 15.5241V45.2563C0.732729 45.667 1.06555 45.9999 1.4763 45.9999H10.7312C11.142 45.9999 11.4748 45.667 11.4748 45.2563V15.5241C11.4748 15.1135 11.142 14.7806 10.7312 14.7806Z" fill="black"/>
+							<path class="fill-black dark:fill-white" d="M6.1071 0C2.73961 0 0 2.73664 0 6.10041C0 9.46566 2.73961 12.2033 6.1071 12.2033C9.47191 12.2033 12.2093 9.46552 12.2093 6.10041C12.2094 2.73664 9.47191 0 6.1071 0Z" fill="black"/>
+							<path class="fill-black dark:fill-white" d="M34.2718 14.0416C30.5547 14.0416 27.8069 15.6395 26.1402 17.4552V15.5241C26.1402 15.1135 25.8074 14.7806 25.3967 14.7806H16.5335C16.1227 14.7806 15.7899 15.1135 15.7899 15.5241V45.2563C15.7899 45.667 16.1227 45.9999 16.5335 45.9999H25.7682C26.1789 45.9999 26.5117 45.667 26.5117 45.2563V30.5458C26.5117 25.5887 27.8582 23.6575 31.3137 23.6575C35.0771 23.6575 35.3762 26.7534 35.3762 30.8008V45.2564C35.3762 45.6672 35.709 46 36.1197 46H45.3579C45.7686 46 46.1014 45.6672 46.1014 45.2564V28.9478C46.1014 21.5768 44.6959 14.0416 34.2718 14.0416Z" fill="black"/>
+						</svg>
+					</a>
+				</section>
 
-			<CvDownload />
+				<CvDownload />
+
+				<div class="scroll" style="--time:40s">
+						<div>
+								{keywords.map(keyword => <span>{keyword}</span>)}
+						</div>
+						<div>
+								{keywords.map(keyword => <span>{keyword}</span>)}
+						</div>
+				</div>
+			</section>
 		</section>
 	</body>
 </html>
+
+<style>
+.scroll {
+    position: relative;
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent)
+}
+
+.scroll div {
+    white-space: nowrap;
+    animation: scroll var(--time) linear infinite;
+    animation-delay: calc(var(--time)*-1);
+}
+
+.scroll div:nth-child(2) {
+    animation: scroll2 var(--time) linear infinite;
+    animation-delay: calc(var(--time)/-2);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes scroll2 {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-200%);
+    }
+}
+
+.scroll div span {
+    display: inline-flex;
+    margin: 10px;
+    letter-spacing: 0.2em;
+    background: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+
+.scroll div span:hover {
+	@apply dark:bg-white dark:text-slate-900 bg-slate-900 text-white;
+  cursor: pointer;
+}
+
+svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+svg {
+    max-width: 100px;
+    scale: 0.8;
+}
+</style>
