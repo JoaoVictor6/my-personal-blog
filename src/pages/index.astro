@@ -4,6 +4,7 @@ import CvDownload from '../components/CvDownload.astro';
 import ExpSection from '../components/ExpSection.astro';
 import { workExperience } from '../infos'
 import { certificates } from '../certificates'
+import { normalizeElementId } from '../normalizeElementId';
 const keywords = [
 	"Git",
 	"GitHub",
@@ -35,7 +36,6 @@ const SITE_DESCRIPTION = "Olá! Sou João Victor, um desenvolvedor Fullstack apa
 
 <script >
 	const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-	console.log({isDarkMode})
 	if(isDarkMode) {
 		document.querySelector('body')?.classList.add('dark')
 	}
@@ -46,6 +46,27 @@ const SITE_DESCRIPTION = "Olá! Sou João Victor, um desenvolvedor Fullstack apa
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-0LWKW1YN1E');
+</script>
+<script>
+	import { certificates } from "../certificates";
+import { workExperience } from "../infos";
+import { normalizeElementId } from "../normalizeElementId";
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			const element = entry.target;
+			if (entry.isIntersecting) {
+				element.setAttribute("appear", "true")
+			}
+		})
+	}, { root: document.querySelector("main"), threshold: 0.5 })
+
+	for (const { name } of certificates) {
+		const normalizedCertName = normalizeElementId(name.toString())
+		const element = document.getElementById(normalizedCertName)
+		if(element) {
+			observer.observe(element)
+		}
+	}
 </script>
 <!doctype html>
 <html lang="pt-br">
@@ -114,7 +135,7 @@ const SITE_DESCRIPTION = "Olá! Sou João Victor, um desenvolvedor Fullstack apa
 				</h1>
 				<section class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
 					{certificates.map(({cert, name}) => (
-						<div class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-gray-800 dark:bg-gray-950 cursor-pointer">
+						<div id={normalizeElementId(name)} class="opacity-0 rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-gray-800 dark:bg-gray-950 cursor-pointer">
 							<div class="mb-4 flex items-center justify-between">
 								<h3 class="text-lg font-semibold">{name}</h3>
 								<a class="text-sm font-medium text-gray-900 hover:underline dark:text-gray-50" href={cert}>
@@ -195,5 +216,21 @@ svg {
 svg {
     max-width: 100px;
     scale: 0.8;
+}
+
+@keyframes appear {
+    0% {
+        transform: translateX(10%);
+				opacity: 0;
+    }
+
+    100% {
+			 opacity: 1;
+    }
+}
+
+[appear="true"] {
+	animation: appear 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+	opacity: 1 !important;
 }
 </style>
