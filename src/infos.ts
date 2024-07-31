@@ -41,7 +41,6 @@ Também desenvolvemos outro serviço com inteligência artificial, uma extensão
       "Scrum & Agile: Aplicação de metodologias Scrum e Agile para gerenciamento de projetos, com ênfase em entregas incrementais e comunicação eficaz.",
       "Code Review: Revisão de código para garantir a qualidade e aderência aos padrões de desenvolvimento da equipe.",
       "Manutenção de Projetos Terceirizados: Suporte e manutenção de projetos de clientes externos, garantindo a continuidade e evolução das soluções desenvolvidas.",
-      ""
     ]
   }
 ]
