@@ -1,5 +1,5 @@
 "use client"
-import { ReactNode, useRef, useState } from "react";
+import { MouseEventHandler, ReactNode, useRef, useState } from "react";
 
 type Props = {
   children: ReactNode,
@@ -12,12 +12,12 @@ export const Card = ({
   className, 
   spotlightColor = "rgba(255, 255, 255, 0.25)"
 }: Props) => {
-  const divRef = useRef(null);
+  const divRef = useRef<HTMLDivElement>(null);
   const [isFocused, setIsFocused] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [opacity, setOpacity] = useState(0);
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove: MouseEventHandler<HTMLDivElement> = (e) => {
     if (!divRef.current || isFocused) return;
 
     const rect = divRef.current.getBoundingClientRect();

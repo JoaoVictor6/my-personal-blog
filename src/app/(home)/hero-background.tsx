@@ -1,5 +1,5 @@
 "use client"
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, MouseEventHandler } from 'react';
 
 type Direction = 'diagonal' | 'down' | 'up' | 'left' | 'right'
 type Props = {
@@ -17,14 +17,15 @@ export const HeroBackground = ({
   squareSize,
   hoverFillColor,
 }: Props ) => {
-  const canvasRef = useRef(null);
-  const requestRef = useRef(null);
-  const numSquaresX = useRef(null);
-  const numSquaresY = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const requestRef = useRef<number>(null);
+  const numSquaresX = useRef<number>(null);
+  const numSquaresY = useRef<number>(null);
   const gridOffset = useRef({ x: 0, y: 0 });
-  const [hoveredSquare, setHoveredSquare] = useState(null);
+  const [hoveredSquare, setHoveredSquare] = useState<{x: number, y: number} | null>(null);
 
   useEffect(() => {
+    if(!canvasRef.current) return 
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
 
@@ -39,6 +40,7 @@ export const HeroBackground = ({
     resizeCanvas();
 
     const drawGrid = () => {
+      if(!ctx) return
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       const startX = Math.floor(gridOffset.current.x / squareSize) * squareSize;
@@ -105,8 +107,8 @@ export const HeroBackground = ({
       requestRef.current = requestAnimationFrame(updateAnimation);
     };
 
-    // Track mouse hover
-    const handleMouseMove = (event) => {
+    const handleMouseMove: MouseEventHandler<HTMLCanvasElement> = (event) => {
+      if(!canvas) return
       const rect = canvas.getBoundingClientRect();
       const mouseX = event.clientX - rect.left;
       const mouseY = event.clientY - rect.top;
@@ -120,20 +122,21 @@ export const HeroBackground = ({
       setHoveredSquare({ x: hoveredSquareX, y: hoveredSquareY });
     };
 
-    const handleMouseLeave = () => {
+    const handleMouseLeave: MouseEventHandler<HTMLCanvasElement> = () => {
       setHoveredSquare(null);
     };
 
-    canvas.addEventListener('mousemove', handleMouseMove);
-    canvas.addEventListener('mouseleave', handleMouseLeave);
+    canvas?.addEventListener('mousemove', handleMouseMove as unknown as Parameters<typeof canvas.removeEventListener>[1]);
+    canvas?.addEventListener('mouseleave', handleMouseLeave as unknown as Parameters<typeof canvas.removeEventListener>[1]);
 
     requestRef.current = requestAnimationFrame(updateAnimation);
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
-      cancelAnimationFrame(requestRef.current);
-      canvas.removeEventListener('mousemove', handleMouseMove);
-      canvas.removeEventListener('mouseleave', handleMouseLeave);
+      if(requestRef.current) cancelAnimationFrame(requestRef.current);
+      if(!canvas) return
+      canvas.removeEventListener('mousemove', handleMouseMove as unknown as Parameters<typeof canvas.removeEventListener>[1]);
+      canvas.removeEventListener('mouseleave', handleMouseLeave as unknown as Parameters<typeof canvas.removeEventListener>[1]);
     };
   }, [direction, speed, borderColor, hoverFillColor, hoveredSquare, squareSize]);
 
