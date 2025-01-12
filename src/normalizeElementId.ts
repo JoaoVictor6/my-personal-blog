@@ -1,1 +1,0 @@
-export const normalizeElementId = (name: string) => name.replaceAll(",", "").replaceAll(":", "").replaceAll(" ", "_").toUpperCase()
