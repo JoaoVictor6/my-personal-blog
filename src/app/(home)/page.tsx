@@ -2,7 +2,7 @@ import { ContactMenu } from "./contact-menu";
 import { HeroBackground } from "./hero-background"
 import { LanguageSelector } from "./language-selector";
 
-const CURRICULUM_LINK = "https://docs.google.com/document/d/19TDROTN_JwutPr1cBGdlVz2RzwDrrPuA/edit?usp=sharing&ouid=117801338461428544744&rtpof=true&sd=true";
+const CURRICULUM_LINK = "https://docs.google.com/document/d/1_F-NdsP4hixYChNGY6Q3itkwWmufqn_N20ukgop1u34/edit?usp=sharing";
 export default function Page() {
   return (
     <>
